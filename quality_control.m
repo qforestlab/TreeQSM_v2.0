@@ -23,7 +23,7 @@ for i = 1:length(clouds)
     model = QSMs(1);
 
     disp(name)
-    plot_cylinder_model_test(model.Rad,model.Len,model.Axe,model.Sta,model.BOrd,1,4,0.75);
+    plot_cylinder_model(model.Rad,model.Len,model.Axe,model.Sta,model.BoC,1,4,0.75);
     figname_cyl = ['figures\',C{1},'_cylinders_v2.0.png'];
     az=0;
     el=0;

@@ -1,4 +1,4 @@
-function plot_cylinder_model(Rad,Len,Axe,Sta,BOrd,fig,ne,alp,C)
+function plot_cylinder_model(Rad,Len,Axe,Sta,BoC,fig,ne,alp,C)
 
 % Plots the cylinders defined by Rad, Len, Axe, Sta.
 % "fig" is figure number, "ne" is the number of facets in the cyliders, 
@@ -27,20 +27,20 @@ if nargin == 6
   Len = Len(Ind);
   Sta = Sta(Ind,:);
   Axe = Axe(Ind,:);
-  BOrd = BOrd(Ind);
+  BoC = BoC(Ind);
   if strcmp(Color,'branch')
     Bran = Bran(Ind);
   end
 end
 
-nc = size(BOrd,1); % Number of cylinder
+nc = size(BoC,1); % Number of cylinder
 
 if strcmp(Color,'order')
   Color = 1;
   % Color the cylinders in branches based on the branch order
   col = [
     0.00  0.00  1.00
-    0.00  0.00  1.00
+    0.00  0.50  0.00
     1.00  0.00  0.00
     0.00  0.75  0.75
     0.75  0.00  0.75
@@ -111,7 +111,7 @@ for i = 1:nc
   Vert(t:t+2*n-1,:) = C;
   Facets(f:f+n-1,:) = Cir{n,2}+t-1;
   if Color == 1
-    fvd(f:f+n-1,:) = repmat(col(BOrd(i)+1,:),[n 1]);
+    fvd(f:f+n-1,:) = repmat(col(BoC(i,2)+1,:),[n 1]);
   else
     fvd(f:f+n-1,:) = repmat(col(Bran(i),:),[n 1]);
   end
